@@ -1,0 +1,248 @@
+[debug] [2020-12-12T06:00:29.249Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T06:00:29.252Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Angel\AppData\Roaming\npm-cache\_npx\2860\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2020-12-12T06:00:29.252Z] CLI Version:   8.19.0
+[debug] [2020-12-12T06:00:29.252Z] Platform:      win32
+[debug] [2020-12-12T06:00:29.252Z] Node Version:  v12.17.0
+[debug] [2020-12-12T06:00:29.253Z] Time:          Sat Dec 12 2020 03:00:29 GMT-0300 (GMT-03:00)
+[debug] [2020-12-12T06:00:29.253Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T06:00:29.253Z] 
+[debug] [2020-12-12T06:00:29.277Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-12T06:00:29.278Z] > authorizing via signed-in user
+[debug] [2020-12-12T06:00:29.278Z] [iam] checking project email-contactform-b259e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-12-12T06:00:29.281Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-12-12T06:00:29.281Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-12-12T06:00:29.386Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 12 Dec 2020 06:00:26 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T06:00:29.427Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/email-contactform-b259e:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-12-12T06:00:30.436Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 06:00:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=813","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T06:00:30.440Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/email-contactform-b259e/serviceAccounts/email-contactform-b259e@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-12-12T06:00:31.493Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 06:00:28 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'email-contactform-b259e'...
+[info] 
+[info] i  deploying functions 
+[debug] [2020-12-12T06:00:36.254Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0",
+    "nodemailer": "^6.4.17"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2020-12-12T06:00:38.095Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-12-12T06:00:38.095Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-12-12T06:00:38.096Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudbuild.googleapis.com  
+ 
+[debug] [2020-12-12T06:00:39.335Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 06:00:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T06:00:39.356Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 06:00:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2020-12-12T06:00:39.360Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudbuild.googleapis.com:enable  
+ 
+[debug] [2020-12-12T06:00:39.367Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 06:00:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2020-12-12T06:00:40.620Z] <<< HTTP RESPONSE 400 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 12 Dec 2020 06:00:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T06:00:40.620Z] <<< HTTP RESPONSE BODY {"error":{"code":400,"message":"Billing account for project '245569445030' is not found. Billing must be enabled for activation of service(s) 'cloudbuild.googleapis.com,containerregistry.googleapis.com' to proceed.","status":"FAILED_PRECONDITION","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"googleapis.com/billing-enabled","subject":"?error_code=390001&project=245569445030&services=cloudbuild.googleapis.com&services=containerregistry.googleapis.com"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"UREQ_PROJECT_BILLING_NOT_FOUND","domain":"serviceusage.googleapis.com/billing-enabled","metadata":{"project":"245569445030","services":"cloudbuild.googleapis.com,containerregistry.googleapis.com"}}]}}
+[error] 
+[error] Error: Your project email-contactform-b259e must be on the Blaze (pay-as-you-go) plan to complete this command. Required API cloudbuild.googleapis.com can't be enabled until the upgrade is complete. To upgrade, visit the following URL:
+
+https://console.firebase.google.com/project/email-contactform-b259e/usage/details
+[debug] [2020-12-12T21:03:53.922Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T21:03:53.924Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Angel\AppData\Roaming\npm-cache\_npx\7268\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2020-12-12T21:03:53.924Z] CLI Version:   8.19.0
+[debug] [2020-12-12T21:03:53.925Z] Platform:      win32
+[debug] [2020-12-12T21:03:53.925Z] Node Version:  v12.17.0
+[debug] [2020-12-12T21:03:53.925Z] Time:          Sat Dec 12 2020 18:03:53 GMT-0300 (GMT-03:00)
+[debug] [2020-12-12T21:03:53.925Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T21:03:53.926Z] 
+[debug] [2020-12-12T21:03:53.933Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-12T21:03:53.933Z] > authorizing via signed-in user
+[debug] [2020-12-12T21:03:53.933Z] [iam] checking project email-contactform-b259e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-12-12T21:03:53.936Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/email-contactform-b259e:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-12-12T21:03:55.069Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=906","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T21:03:55.072Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/email-contactform-b259e/serviceAccounts/email-contactform-b259e@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-12-12T21:03:56.105Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'email-contactform-b259e'...
+[info] 
+[info] i  deploying functions 
+[debug] [2020-12-12T21:03:58.829Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0",
+    "nodemailer": "^6.4.17"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2020-12-12T21:04:00.207Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-12-12T21:04:00.208Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-12-12T21:04:01.428Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T21:04:01.440Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2020-12-12T21:04:01.448Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/email-contactform-b259e/adminSdkConfig  
+ 
+[debug] [2020-12-12T21:04:02.450Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing functions directory for uploading... 
+[debug] [2020-12-12T21:04:02.461Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/email-contactform-b259e/configs  
+ 
+[debug] [2020-12-12T21:04:03.636Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:03:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[error] 
+[error] Error: Error occurred while parsing your function triggers.
+
+ReferenceError: nodemailer is not defined
+    at Object.<anonymous> (C:\Proyecto\paper-kit-2-angular-master\functions\index.js:12:19)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+    at Module.load (internal/modules/cjs/loader.js:986:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+    at Module.require (internal/modules/cjs/loader.js:1026:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at C:\Users\Angel\AppData\Roaming\npm-cache\_npx\7268\node_modules\firebase-tools\lib\triggerParser.js:15:15
+    at Object.<anonymous> (C:\Users\Angel\AppData\Roaming\npm-cache\_npx\7268\node_modules\firebase-tools\lib\triggerParser.js:53:3)
+    at Module._compile (internal/modules/cjs/loader.js:1138:30)
+[debug] [2020-12-12T21:05:04.606Z] Error: EPERM: operation not permitted, unlink 'C:\Users\Angel\AppData\Roaming\npm-cache\_npx\7268\node_modules\firebase-tools\node_modules\re2\build\Release\re2.node'
+    at Object.unlinkSync (fs.js:1129:3)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:219:13)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+    at Array.forEach (<anonymous>)
+    at rmkidsSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:349:26)
+    at rmdirSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:342:7)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:217:5)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+    at Array.forEach (<anonymous>)
+    at rmkidsSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:349:26)
+    at rmdirSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:342:7)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:217:5)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-12-12T21:07:16.216Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T21:07:16.218Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Angel\AppData\Roaming\npm-cache\_npx\6672\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2020-12-12T21:07:16.218Z] CLI Version:   8.19.0
+[debug] [2020-12-12T21:07:16.218Z] Platform:      win32
+[debug] [2020-12-12T21:07:16.218Z] Node Version:  v12.17.0
+[debug] [2020-12-12T21:07:16.219Z] Time:          Sat Dec 12 2020 18:07:16 GMT-0300 (GMT-03:00)
+[debug] [2020-12-12T21:07:16.219Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T21:07:16.219Z] 
+[debug] [2020-12-12T21:07:16.227Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-12T21:07:16.227Z] > authorizing via signed-in user
+[debug] [2020-12-12T21:07:16.228Z] [iam] checking project email-contactform-b259e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-12-12T21:07:16.231Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/email-contactform-b259e:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-12-12T21:07:17.152Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:07:13 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=822","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T21:07:17.155Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/email-contactform-b259e/serviceAccounts/email-contactform-b259e@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-12-12T21:07:18.095Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:07:14 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'email-contactform-b259e'...
+[info] 
+[info] i  deploying functions 
+[debug] [2020-12-12T21:07:20.942Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0",
+    "nodemailer": "^6.4.17"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2020-12-12T21:07:22.411Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-12-12T21:07:22.411Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-12-12T21:07:22.412Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudbuild.googleapis.com  
+ 
+[debug] [2020-12-12T21:07:23.505Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:07:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T21:07:23.524Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:07:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2020-12-12T21:07:23.529Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/email-contactform-b259e/services/cloudbuild.googleapis.com:enable  
+ 
+[debug] [2020-12-12T21:07:23.537Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 21:07:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2020-12-12T21:07:24.709Z] <<< HTTP RESPONSE 400 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 12 Dec 2020 21:07:20 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T21:07:24.710Z] <<< HTTP RESPONSE BODY {"error":{"code":400,"message":"Billing account for project '245569445030' is not found. Billing must be enabled for activation of service(s) 'cloudbuild.googleapis.com,containerregistry.googleapis.com' to proceed.","status":"FAILED_PRECONDITION","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"googleapis.com/billing-enabled","subject":"?error_code=390001&project=245569445030&services=cloudbuild.googleapis.com&services=containerregistry.googleapis.com"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"UREQ_PROJECT_BILLING_NOT_FOUND","domain":"serviceusage.googleapis.com/billing-enabled","metadata":{"project":"245569445030","services":"cloudbuild.googleapis.com,containerregistry.googleapis.com"}}]}}
+[error] 
+[error] Error: Your project email-contactform-b259e must be on the Blaze (pay-as-you-go) plan to complete this command. Required API cloudbuild.googleapis.com can't be enabled until the upgrade is complete. To upgrade, visit the following URL:
+
+https://console.firebase.google.com/project/email-contactform-b259e/usage/details
+[debug] [2020-12-12T21:08:27.454Z] Error: EPERM: operation not permitted, unlink 'C:\Users\Angel\AppData\Roaming\npm-cache\_npx\6672\node_modules\firebase-tools\node_modules\re2\build\Release\re2.node'
+    at Object.unlinkSync (fs.js:1129:3)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:219:13)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+    at Array.forEach (<anonymous>)
+    at rmkidsSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:349:26)
+    at rmdirSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:342:7)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:217:5)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+    at Array.forEach (<anonymous>)
+    at rmkidsSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:349:26)
+    at rmdirSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:342:7)
+    at fixWinEPERMSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:217:5)
+    at rimrafSync (C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:319:28)
+    at C:\Users\Angel\AppData\Roaming\npm\node_modules\npm\node_modules\rimraf\rimraf.js:350:5
+[error] 
+[error] Error: An unexpected error has occurred.

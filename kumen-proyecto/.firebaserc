@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "email-contactform-b259e": {
+      "hosting": {
+        "pk2-angular": [
+          "email-contactform-b259e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "email-contactform-b259e"
+  }
+}
