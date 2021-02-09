@@ -35,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule        
     //AngularFireAuthModule
   ],
   providers: [],

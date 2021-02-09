@@ -2,7 +2,7 @@
     <div class="filter"></div>
     <div class="container">
         <div class="motto text-center">
-            <h1 class="presentation-title">Kumen</h1>
+            <h1 class="presentation-title">Ecokumen</h1>
             <h3>Reciclar no es una obligación es tu responsabilidad</h3>
             <br />
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Ver video</a>
@@ -223,8 +223,9 @@ style="background-image: url('./assets/img/fabio-mangione.jpg');"
             <div class="row">
                 <div class="col-md-8 mr-auto ml-auto">
                     <h2 class="text-center">Contacto</h2>
+                    <h4 class="text-center">Envíanos tu consulta!</h4>
 
-                        <form class="contact-form" [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>                            
+                        <form id="contact-form" name="formname" class="contact-form" [formGroup]="myForm" (submit)="envio($event)" novalidate>                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="row">
@@ -237,7 +238,7 @@ style="background-image: url('./assets/img/fabio-mangione.jpg');"
 <!--
                                                 <input id="name" type="text" class="form-control" required minLength="4" placeholder="Nombre" id="item" required name="item" formControlName="name">
 -->                                            
-                                                <input id="name" type="text" class="form-control" placeholder="Nombre" formControlName="name">
+                                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" formControlName="name">
                                     
                                             </div>
                                         </div>
@@ -258,8 +259,11 @@ style="background-image: url('./assets/img/fabio-mangione.jpg');"
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
-                                                </div>                                                
-                                                <input type="text" class="form-control form-control-danger" placeholder="Email" id="item2" required name="item2" formControlName="correo">
+                                                </div>
+                                                <input id="email" type="text"  class="form-control form-control-danger" placeholder="Email" id="item2" required name="item2" formControlName="correo"> 
+                                                <!--                                               
+                                                <input id="email" type="text" name="email" class="form-control form-control-danger" placeholder="Email" id="item2" required name="item2" formControlName="correo">
+                                            -->
                                             </div>
                                         </div>
                                     </div>
@@ -275,7 +279,7 @@ style="background-image: url('./assets/img/fabio-mangione.jpg');"
 
                             
                             <label>Mensaje</label>
-                            <textarea class="form-control" rows="4"  required minLength="5" maxLength="1000" placeholder="Cuentanos que piensas o sientes..." formControlName="mensaje"></textarea>
+                            <textarea class="form-control" name="mensaje" rows="4"  required minLength="5" maxLength="1000" placeholder="Cuentanos que piensas o sientes..." formControlName="mensaje"></textarea>
                             
                             <div class="row" *ngIf="myForm.get('mensaje').errors && myForm.get('mensaje').dirty">
                                 <div class="col-md-6" *ngIf="myForm.get('mensaje').errors && myForm.get('mensaje').dirty"> 
@@ -290,22 +294,19 @@ style="background-image: url('./assets/img/fabio-mangione.jpg');"
                             <div class="row">  
                                 <div class="col-md-4 mr-auto ml-auto">
                                     <button type="submit" class="btn btn-danger btn-lg btn-fill" [disabled]="myForm.invalid">ENVIAR MENSAJE</button>                                    
-
+                                    
                                 </div>                                
-                            </div>                          
-
+                            </div>                         
+                            <br>
+                            <br>
+                            <flash-messages></flash-messages>  
                         </form>
-
-                        <br>
-                        <ngb-alert [type]="success" *ngIf="notificacion()" class="alert alert-success text-center"  [dismissible]="false">
-                            <label>Envío exitoso</label>
-                        </ngb-alert>
-                        <ngb-alert [type]="danger" *ngIf="!notificacion()" class="alert alert-danger text-center"  [dismissible]="false">
-                            <label>Error en el mensaje</label>
-                        </ngb-alert>
+                        
+                        
+                        <br>                       
                 </div>
 
-                        
+                     
             </div>
         </div>
     </div>

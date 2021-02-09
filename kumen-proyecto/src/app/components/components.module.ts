@@ -16,6 +16,9 @@ import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import {FlashMessagesModule} from 'angular2-flash-messages';
+import {FlashMessagesService} from 'angular2-flash-messages';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -24,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         NouisliderModule,
         RouterModule,
         JwBootstrapSwitchNg2Module,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FlashMessagesModule
     ],
     declarations: [
         ComponentsComponent,
@@ -36,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         NgbdModalComponent,
         NgbdModalContent
     ],
+    providers: [FlashMessagesService],
     entryComponents: [NgbdModalContent],
     exports:[ ComponentsComponent ]
 })

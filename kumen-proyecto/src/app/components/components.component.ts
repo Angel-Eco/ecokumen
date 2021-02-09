@@ -2,11 +2,13 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { HttpService } from "../Shared/http.service";
+import { HttpService } from './http.service';
 import { NotificationComponent } from './notification/notification.component';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { timeout } from 'rxjs-compat/operator/timeout';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 declare const FormFacade: any;
 
@@ -50,7 +52,7 @@ export class ComponentsComponent implements OnInit {
     */
 
   
-    constructor( private renderer : Renderer2, public db?: AngularFireDatabase, public http?: HttpService, public fb?: FormBuilder) {
+    constructor( private renderer : Renderer2, public db?: AngularFireDatabase, public http?: HttpService, public fb?: FormBuilder, public flashMensaje?: FlashMessagesService) {
         this.myForm = this.fb.group({
         name: ['', [Validators.required]],
         correo: ['', [Validators.required, Validators.email]],
@@ -116,9 +118,11 @@ export class ComponentsComponent implements OnInit {
         this.http.sendEmail("http://localhost:3000/sendmail", user).subscribe(
             data => {
             let res:any = data;
+            this.flashMensaje.show('Mensaje enviado', {cssClass: 'alert alert-success text-center', timeout: 4000});
             },
             err => {
             console.log(err);
+            this.flashMensaje.show('Error en Mensaje', {cssClass: 'alert alert-danger text-center', timeout: 4000});
             //this.loading = false;
             //this.buttionText = "Submit";
             this.emailError = true;
@@ -127,14 +131,29 @@ export class ComponentsComponent implements OnInit {
             //this.buttionText = "Submit";
             }
         );
+        
+        console.log('flash');
         this.itemValueName = '';
-        this.itemValueEmail = '';        
-
-        this.notificacion(); 
+        this.itemValueEmail = '';      
         
     }
-
-    notificacion(){        
-        return true;  
+ 
+    public envio(e: Event) {
+        e.preventDefault();
+        emailjs.sendForm('service_l24vktn', 'template_contacto', e.target as HTMLFormElement, 'user_3QlhDkioccqxBzrKDU3t9')
+          .then((result: EmailJSResponseStatus) => {
+            console.log(result.text);
+            this.flashMensaje.show('Mensaje enviado', {cssClass: 'alert alert-success text-center', timeout: 4000});
+          }, (error) => {
+            this.flashMensaje.show('Error en Mensaje', {cssClass: 'alert alert-danger text-center', timeout: 4000});  
+            console.log(error.text);
+          });
+          console.log("Form Submitted!");
+          this.myForm.reset();        
     }
+   
+
+
+  
+
 }

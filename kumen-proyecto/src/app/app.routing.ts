@@ -8,6 +8,7 @@ import { ProfileComponent } from './examples/profile/profile.component';
 import { SignupComponent } from './examples/signup/signup.component';
 import { LandingComponent } from './examples/landing/landing.component';
 import { FaqComponent } from './examples/faq/faq.component';
+import { PlanesComponent } from './examples/planes/planes.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
 const routes: Routes =[
@@ -17,6 +18,7 @@ const routes: Routes =[
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'faq',          component: FaqComponent },
+    { path: 'planes',          component: PlanesComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent }
 ];
 
@@ -25,7 +27,7 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes,{
-      useHash: true
+      useHash: false
     })
   ],
   exports: [
