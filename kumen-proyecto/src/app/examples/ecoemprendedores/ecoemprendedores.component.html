@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/natural.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img src="./assets/img/faces/logo_test.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>                
+            </div>
+            
+        </div>
+        <div class="container">
+            <div class="col-md-8 mr-auto ml-auto">                
+                <div class="container">
+                    <h4 class="title text-center">Busca EcoEmprendedores en tu ciudad:</h4>
+                    <ng-autocomplete 
+                    [data]="data"
+                    [searchKeyword]="keyword"                    
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate"
+                    placeholder="Indique su ciudad">                                 
+                    </ng-autocomplete>
+                    
+                    <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+                <br>
+                <p align="center">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1B-TIrT_-DJirhJJF1-fLvLmsfEVvEJXh" width="640" height="480" ></iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

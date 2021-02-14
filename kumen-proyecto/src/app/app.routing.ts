@@ -10,6 +10,7 @@ import { LandingComponent } from './examples/landing/landing.component';
 import { FaqComponent } from './examples/faq/faq.component';
 import { PlanesComponent } from './examples/planes/planes.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { EcoemprendedoresComponent } from './examples/ecoemprendedores/ecoemprendedores.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes =[
     { path: 'landing',          component: LandingComponent },
     { path: 'faq',          component: FaqComponent },
     { path: 'planes',          component: PlanesComponent },
+    { path: 'ecoemprendedores',          component: EcoemprendedoresComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent }
 ];
 
@@ -27,7 +29,7 @@ const routes: Routes =[
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes,{
-      useHash: false
+      useHash: true
     })
   ],
   exports: [
