@@ -1,5 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.interface';
 
 @Component({
     selector: 'app-navbar',
@@ -9,8 +13,9 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    public user$: Observable<User> = this.authSvc.afAuth.user;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element : ElementRef, public authSvc: AuthService, private router: Router) {
         this.sidebarVisible = false;
     }
 
@@ -71,4 +76,13 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    async onLogout() {
+        try {
+          await this.authSvc.logout();
+          this.router.navigate(['/home']);
+        } catch (error) {
+          console.log(error);
+        }
+      }
 }

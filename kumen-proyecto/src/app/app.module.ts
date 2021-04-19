@@ -12,12 +12,13 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 
-//import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
+
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthService } from './auth/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -35,10 +36,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    HttpClientModule        
-    //AngularFireAuthModule
+    HttpClientModule,        
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

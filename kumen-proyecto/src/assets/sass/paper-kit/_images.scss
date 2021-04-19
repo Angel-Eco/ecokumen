@@ -3,6 +3,17 @@
     transition: opacity 0.5s ease 0s;
     max-width: 100%;
 }
+.img-rounded-eco{   
+    border-radius: 0;  
+    transition: opacity 0.5s ease 0s;
+    max-width: 100%;    
+}
+.img-shadow{
+    box-shadow: 0px 0px 9px 2px;
+}
+.img-card{
+    margin-top: 35px;    
+}
 .img-details{
     min-height: 50px;
     padding: 0 4px 0.5em;

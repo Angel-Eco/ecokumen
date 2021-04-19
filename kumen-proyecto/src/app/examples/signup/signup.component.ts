@@ -12,4 +12,8 @@ export class SignupComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {}
+
+    onGoogleLogin(){
+        
+    }
 }

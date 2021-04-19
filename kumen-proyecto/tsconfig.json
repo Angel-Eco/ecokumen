@@ -3,11 +3,17 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],      
+      "@auth/*": ["app/auth/*"],
+      "@shared/*": ["app/shared/*"]
+    },
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "module": "esnext",
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
@@ -16,6 +22,6 @@
       "es2016",
       "dom"
     ],
-    "module": "es2015"
+    //"module": "es2015"
   }
 }

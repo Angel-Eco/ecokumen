@@ -11,30 +11,149 @@
             </div>
             
         </div>
+        <!--Codigo malo de prueba-->
+        
         <div class="container">
-            <div class="col-md-8 mr-auto ml-auto">                
-                <div class="container">
-                    <h4 class="title text-center">Busca EcoEmprendedores en tu ciudad:</h4>
-                    <ng-autocomplete 
-                    [data]="data"
-                    [searchKeyword]="keyword"                    
-                    [itemTemplate]="itemTemplate"
-                    [notFoundTemplate]="notFoundTemplate"
-                    placeholder="Indique su ciudad">                                 
-                    </ng-autocomplete>
-                    
-                    <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                    </ng-template>
-                    
-                    <ng-template #notFoundTemplate let-notFound>
-                    <div [innerHTML]="notFound"></div>
-                    </ng-template>
-                </div>
-                <br>
+            <div class="col-md-8 mr-auto ml-auto">
+                <h4 class="title text-center">Busca EcoEmprendedores en tu ciudad:</h4>
                 <p align="center">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1B-TIrT_-DJirhJJF1-fLvLmsfEVvEJXh" width="640" height="480" ></iframe>
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1B-TIrT_-DJirhJJF1-fLvLmsfEVvEJXh" width="640" height="480" ></iframe>
                 </p>
+                <br> 
+            </div>
+
+            <br><br>  
+        
+
+
+
+        </div>
+
+        <!--Codigo q va bien-->
+        <div class='flex-container flex-center' (mouseout)="focusOnList=false">
+            <div class="width-half">
+                <label for="search">
+                    <i class='fa fa-search icon-pos color-purple'></i>
+                </label>
+                <br>
+                <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                    <input id='search' placeholder="Busca tu Ecoemprendedor" (blur)="searching=false" (focus)="searching = true" formControlName='search' (click)='openDropDown()' class='input-underline search-bar' type='text'>
+                </form>
+
+                
+                <div clickOutside (clickOutside)='closeDropDown()'>
+                    <div *ngIf='searching || focusOnList' class='search-drop-down' (mouseover)="focusOnList=true" (focus)="focusOnList=true">
+                        <div (click)='selectValue(s.name)'  class='search-results' *ngFor="let s of ecoemprendedorList | searchFilter: getSearchValue(): 'name'">
+                            <a [innerHTML]="s.name | letterBold: getSearchValue()">
+                                {{s.name}}
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+
+        <br><br><br>
+        
+        <div class='container flex-container card-container flex-wrap'>
+            <div class='flex-container card-dimensions card flex-center width-100' *ngFor="let s of ecoemprendedorList | searchFilter: getSearchValue(): 'name' ">
+                <div class='width-5'></div>
+                
+                    
+                        <a href="#/faq"><img class="img-rounded-eco img-card" src='{{s.imagen}}' alt="..."></a>                              
+                    
+                
+                <a href="#/faq">
+                    <h6>{{s.name}}</h6>
+                </a>
+                
+                <div class='width-5 '>                
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!--Esta es la seccion de admin-->
+    <div class="col-md-5 mr-auto ml-auto text-center" *ngIf="user$ | async as user">
+        <div class="container">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form #ecoemprendedorForm="ngForm" (ngSubmit)="onSubmit(ecoemprendedorForm)">
+                        <!-- TO UPDATE -->
+                        <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="ecoemprendedorService.selectedEcoemprendedor.$key">
+                        <label>Administración Ecoemprendedores</label>
+                        <div class="form-group">
+                        <input 
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            #name="ngModel"
+                            [(ngModel)]="ecoemprendedorService.selectedEcoemprendedor.name"
+                            placeholder="Agregar Ecoemprendedor"
+                            >
+                        </div>                
+                        <div class="form-group">
+                            <label>Seleccione imagen para subir</label>
+                            <input 
+                            type="file" 
+                            accept=".jpeg,.jpg,.png,.svg" 
+                            class="form-control"                     
+                            name="fileUploader"
+                            #fileUploader="ngModel"
+                            [(ngModel)]="ecoemprendedorService.selectedEcoemprendedor.imagen"
+                            (change)="showPreview($event)">
+                            <!--
+                            <div class="text-danger" *ngIf="isSubmitted">This field is required.
+                            </div>
+                            -->
+                        </div>
+                        <div class="text-center">
+                            <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary" type="submit">
+                                Agregar Ecoemprendedor
+                            </button>
+                            <!--
+                            <button class="btn btn-secondary" type="reset" (click)="resetForm(ecoemprendedorForm)">
+                                <i class="fas fa-sync-alt"></i> Reset
+                            </button>
+                            -->
+                        </div>
+                        <div *ngIf="progressValue | async as val">
+                            <progress type="warning"  [value]="val" style="height: 7mm; width: 50%" max="100" ></progress>
+                            <br />
+                                <span *ngIf="val<100" style="color:rgb(255, 60, 0); font-size: 17px; font-weight: 410;">{{ val | number}}% </span><span *ngIf="val == 100" style="color:rgb(1, 153, 34);  font-size: 17px; font-weight: 410;">Completed !</span>
+                        </div>
+                        <input type="hidden" #imageUser [value]="urlImage | async">
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="card">
+                <div class="card-body">
+                <h6 class="text-center mb-3">
+                    Lista de Ecoemprendedores
+                </h6>
+                <table class="table table-sm table-hover">
+                    <tbody>
+                    <tr *ngFor="let ecoemprendedor of ecoemprendedorList">
+                        <td>{{ecoemprendedor.name}}</td>                
+                        <td>                  
+                        <a class="btn btn-danger btn-just-icon text-white" (click)="onDelete(ecoemprendedor.$key,ecoemprendedor.imagen)">
+                            <i class="fa fa-trash"></i>
+                        </a>                                 
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
             </div>
         </div>
     </div>

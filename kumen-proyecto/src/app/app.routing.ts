@@ -21,7 +21,12 @@ const routes: Routes =[
     { path: 'faq',          component: FaqComponent },
     { path: 'planes',          component: PlanesComponent },
     { path: 'ecoemprendedores',          component: EcoemprendedoresComponent },
-    { path: 'nucleoicons',      component: NucleoiconsComponent }
+    { path: 'nucleoicons',      component: NucleoiconsComponent },
+    {
+      path: 'login',
+      loadChildren: () =>
+        import('./auth/login/login.module').then((m) => m.LoginModule),
+    },
 ];
 
 @NgModule({

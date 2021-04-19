@@ -56,18 +56,49 @@
                 </li>
                 -->
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.instagram.com/kumen_reciclaje/" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.instagram.com/ecokumen/" target="_blank">
                         <i class="fa fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/kumen_reciclaje/" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/ecokumen/" target="_blank">
                         <i class="fa fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
-                </li>                
+                </li>
+                <!--        
+                <ul class="navbar-nav" *ngIf="user$ | async as user; else login">                   
+                    <li class="nav-item">                      
+                        <div ngbDropdown class="d-inline-block" display="dynamic" ngbDropdown placement="bottom-right">
+                        <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{ user?.email }}</a>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                                <a class="dropdown-item" (click)="onLogout()">Logout</a>                            
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                -->
+                <div ngbDropdown class="d-inline-block" *ngIf="user$ | async as user; else login" display="dynamic" placement="bottom-right">
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ user?.email }}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger">
+                      <button ngbDropdownItem (click)="onLogout()">Logout</button>                  
+                    </div>
+                </div>
+                <!--
+                <li class="nav-item">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                        <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Dropdown</a>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                            <a class="dropdown-item">Action - 1</a>
+                            <a class="dropdown-item">Another Action</a>
+                            <a class="dropdown-item">Something else is here</a>
+                        </div>
+                    </div>
+                </li>
+                -->
+                
             </ul>
-        </div>
+        </div>    
     </div>
 </nav>
