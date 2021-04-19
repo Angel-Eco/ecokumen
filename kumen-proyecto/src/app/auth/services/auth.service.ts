@@ -11,6 +11,7 @@ import {
 //import { RoleValidator } from '../helpers/roleValidator';
 import { RoleValidator } from '@auth/helpers/roleValidator';
 
+import { map } from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
@@ -30,15 +31,22 @@ export class AuthService extends RoleValidator {
   }
 
   async loginGoogle(): Promise<User> {
-    try {
+        
+    
+    try {     
       const { user } = await this.afAuth.signInWithPopup(
         new firebase.auth.GoogleAuthProvider()
-      );
+      );      
       this.updateUserData(user);
-      return user;
+      return user;      
     } catch (error) {
       console.log(error);
     }
+
+    /*
+    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(credential => this.updateUserData(credential.user));
+      */
   }
 
   async resetPassword(email: string): Promise<void> {
@@ -79,6 +87,15 @@ export class AuthService extends RoleValidator {
     }
   }
 
+  //VALIDACION DE ROLES
+  isAuth() {
+    return this.afAuth.authState.pipe(map(auth => auth));
+  }
+
+  isUserAdmin(userUid) {
+    return this.afs.doc<User>(`users/${userUid}`).valueChanges();
+  }
+
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
@@ -90,7 +107,21 @@ export class AuthService extends RoleValidator {
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
-    );
+    );    
+    if(user.email =='angelespinoza.pucv@gmail.com' 
+    || user.email =='tania.nunez.e@gmail.com' 
+    || user.email =='violeta.a.o.p@gmail.com'){
+      const data: User = {
+        uid: user.uid,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        roles: 'ADMIN',
+      };            
+      //return user
+      return userRef.set(data, { merge: true });
+    };
 
     const data: User = {
       uid: user.uid,
@@ -98,7 +129,7 @@ export class AuthService extends RoleValidator {
       emailVerified: user.emailVerified,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      role: 'ADMIN',
+      roles: 'EDITOR',
     };
 
     return userRef.set(data, { merge: true });

@@ -77,7 +77,7 @@
     </div>
 
 <!--Esta es la seccion de admin-->
-    <div class="col-md-5 mr-auto ml-auto text-center" *ngIf="user$ | async as user">
+    <div class="col-md-5 mr-auto ml-auto text-center" *ngIf="isAdmin == true">
         <div class="container">
             <div class="card mt-5">
                 <div class="card-body">

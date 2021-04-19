@@ -20,8 +20,8 @@ export class LoginComponent {
   //validamos con el if los usuarios admin(user.email) con acceso a la plataforma
   async onGoogleLogin() {
     try {
-      const user = await this.authSvc.loginGoogle();
-      if (user && user.email =='angelespinoza.pucv@gmail.com') {
+      const user = await this.authSvc.loginGoogle();      
+      if (user) {
         this.checkUserIsVerified(user);
         console.log(user.displayName);
       }

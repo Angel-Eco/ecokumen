@@ -31,6 +31,7 @@ import { AuthService } from '../../auth/services/auth.service';
 export class EcoemprendedoresComponent implements OnInit {
 
   public user$: Observable<User> = this.authSvc.afAuth.user;
+  
   //estas variables son para q la barra search no aparezca cargada
   searching = false;
   focusOnList = false;
@@ -76,8 +77,11 @@ export class EcoemprendedoresComponent implements OnInit {
   }
   @ViewChild('imageUser',{static:true}) inputImageUser: ElementRef;
 
+  //VALIDACION DE ROLES
+  public isAdmin: any = null;
+  public userUid: string = null;
   
-  initForm(): FormGroup {
+  initForm(): FormGroup {    
     return this.stateForm = this.fb.group({
       search: [null]
     })
@@ -85,7 +89,8 @@ export class EcoemprendedoresComponent implements OnInit {
   
 
   ngOnInit() {    
-    this.resetFormTest();    
+    this.resetFormTest();
+    this.getCurrentUser();    
     return this.ecoemprendedorService.getEcoemprendedores()
       .snapshotChanges().subscribe(item => {
         this.ecoemprendedorList = [];
@@ -97,6 +102,24 @@ export class EcoemprendedoresComponent implements OnInit {
       });     
   } 
 
+  //VALIDACION DE ROL ADMIN
+  getCurrentUser() {
+    this.authSvc.isAuth().subscribe(auth => {
+      if (auth) {
+        this.userUid = auth.uid;
+        this.authSvc.isUserAdmin(this.userUid).subscribe(userRole => {
+          //this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+          //console.log(Object.assign({}, userRole));
+          
+          if(Object.assign({}, userRole).roles =='ADMIN'){
+            this.isAdmin = true;
+          }
+          
+          // this.isAdmin = true;
+        })
+      }
+    })
+  }
 
   selectValue(value) {
     this.stateForm.patchValue({"search": value});
